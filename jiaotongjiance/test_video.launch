@@ -1,0 +1,14 @@
+<launch>
+    <node name="video_stream" pkg="video_stream_opencv" type="video_stream" output="screen">
+        <param name="video_stream_provider" value="/home/your_user/videos/test_lane.mp4" />
+        <param name="fps" value="30" />
+        <param name="frame_id" value="camera" />
+        <param name="camera_name" value="usb_cam" /> <param name="loop_videofile" value="true" /> <param name="start_frame" value="0" />
+    </node>
+
+    <node name="lane_detector" pkg="your_package" type="lane_det_node.py" output="screen" />
+
+    <node name="sign_detector" pkg="your_package" type="sign_det_node.py" output="screen" />
+
+    <node name="decision_center" pkg="your_package" type="decision_node.py" output="screen" />
+</launch>
